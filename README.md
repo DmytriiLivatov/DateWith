@@ -21,3 +21,4 @@ An interactive web-based invitation system built with HTML, CSS, and JavaScript.
 2. Navigate to `script.js` and input your specific `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID`.
 3. Ensure all `.json` animation files are located in the root directory.
 4. Deploy the project via GitHub Pages or any static hosting provider.
+)

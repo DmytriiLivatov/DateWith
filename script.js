@@ -33,14 +33,18 @@ function initLottieIcons() {
 }
 
 function initPickers() {
-    flatpickr("#date", {
+    const datePicker = flatpickr("#date", {
         locale: "ru",
         dateFormat: "d.m.Y",
         minDate: "today",
-        disableMobile: true
+        disableMobile: true,
+        onChange: function(selectedDates) {
+            
+            updateTimePicker(selectedDates[0]);
+        }
     });
 
-    flatpickr("#time", {
+    let timePicker = flatpickr("#time", {
         enableTime: true,
         noCalendar: true,
         dateFormat: "H:i",
@@ -48,8 +52,22 @@ function initPickers() {
         locale: "ru",
         disableMobile: true
     });
-}
 
+    function updateTimePicker(selectedDate) {
+        const now = new Date();
+        const isToday = selectedDate && selectedDate.toDateString() === now.toDateString();
+
+        if (isToday) {
+    
+            const currentHours = now.getHours();
+            const currentMinutes = now.getMinutes();
+            
+            timePicker.set('minTime', `${currentHours}:${currentMinutes}`);
+        } else {
+            timePicker.set('minTime', "00:00");
+        }
+    }
+}
 /* =========================
    NO BUTTON (FIXED)
 ========================= */

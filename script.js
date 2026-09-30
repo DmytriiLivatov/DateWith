@@ -177,7 +177,6 @@ function sendToTelegram() {
     btn.disabled = true;
     btn.innerText = "Отправляю...";
 
-    // Отправляем данные на наш сервер в Vercel, а не напрямую в Telegram
     fetch('/api/send-telegram', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

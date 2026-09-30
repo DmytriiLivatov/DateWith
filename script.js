@@ -1,9 +1,3 @@
-/**
- * Telegram Bot Configuration
- */
-const TELEGRAM_BOT_TOKEN = '8131140460:AAGpIRs_74_3RrmI9rVEqJhhHnDfOswuanU';
-const TELEGRAM_CHAT_ID = '1948777578';
-
 let heartAnimation = null;
 let yesBtnScale = 1;
 

@@ -177,20 +177,11 @@ function sendToTelegram() {
     btn.disabled = true;
     btn.innerText = "Отправляю...";
 
-    const text =
-        `💌 ПРИГЛАШЕНИЕ\n\n` +
-        `📅 ${date}\n` +
-        `⏰ ${time}\n` +
-        `📍 ${place || 'Сюрприз'}\n` +
-        `💭 ${wish || 'Без пожеланий'}`;
-
-    fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    // Отправляем данные на наш сервер в Vercel, а не напрямую в Telegram
+    fetch('/api/send-telegram', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            chat_id: TELEGRAM_CHAT_ID,
-            text
-        })
+        body: JSON.stringify({ date, time, place, wish })
     })
     .then(r => r.ok ? nextStep(5) : Promise.reject())
     .catch(() => {
